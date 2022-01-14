@@ -4,6 +4,7 @@
   "description": "CCP555 repo for labs and assignments",
   "devDependencies": {
     "eslint": "^8.6.0",
+    "nodemon": "^2.0.15",
     "prettier": "2.5.1"
   },
   "engines": {
@@ -11,7 +12,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --config .eslintrc.js src/**"
+    "lint": "eslint --config .eslintrc.js src/**",
+    "start": "node src/server.js",
+    "dev": "LOG_LEVEL=debug nodemon -L ./src/server.js --watch src",
+    "debug": "LOG_LEVEL=debug nodemon -L --inspect=0.0.0.0:9229 ./src/server.js --watch src"
   },
   "repository": {
     "type": "git",
@@ -25,8 +29,13 @@
   },
   "homepage": "https://github.com/luanlcampos/fragments#readme",
   "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "helmet": "^5.0.1",
     "pino": "^7.6.3",
     "pino-http": "^6.5.0",
-    "pino-pretty": "^7.3.0"
+    "pino-pretty": "^7.3.0",
+    "stoppable": "^1.1.0"
   }
 }
