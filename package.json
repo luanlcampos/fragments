@@ -23,5 +23,10 @@
   "bugs": {
     "url": "https://github.com/luanlcampos/fragments/issues"
   },
-  "homepage": "https://github.com/luanlcampos/fragments#readme"
+  "homepage": "https://github.com/luanlcampos/fragments#readme",
+  "dependencies": {
+    "pino": "^7.6.3",
+    "pino-http": "^6.5.0",
+    "pino-pretty": "^7.3.0"
+  }
 }
