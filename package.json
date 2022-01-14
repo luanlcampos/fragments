@@ -3,13 +3,15 @@
   "version": "0.0.1",
   "description": "CCP555 repo for labs and assignments",
   "devDependencies": {
+    "eslint": "^8.6.0",
     "prettier": "2.5.1"
   },
   "engines": {
     "node": ">=16"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --config .eslintrc.js src/**"
   },
   "repository": {
     "type": "git",
