@@ -12,6 +12,8 @@ const pino = require('pino-http')({
 const passport = require('passport');
 const authorization = require('./authorization');
 
+const { createErrorResponse } = require('./response');
+
 // Create an express app instance we can use to attach middleware and HTTP routes
 const app = express();
 
@@ -35,13 +37,9 @@ app.use('/', require('./routes'));
 
 // Add 404 middleware to handle any requests for resources that can't be found can't be found
 app.use((req, res) => {
-  res.status(404).json({
-    status: 'error',
-    error: {
-      message: 'not found',
-      code: 404,
-    },
-  });
+  // get error response
+  const errorResponse = createErrorResponse(404, 'not found');
+  res.status(404).json(errorResponse);
 });
 
 // Add error-handling middleware to deal with anything else
@@ -57,13 +55,8 @@ app.use((err, req, res, next) => {
     logger.error({ err }, `Error processing request`);
   }
 
-  res.status(status).json({
-    status: 'error',
-    error: {
-      message,
-      code: status,
-    },
-  });
+  const errorResponse = createErrorResponse(status, message);
+  res.status(status).json(errorResponse);
 });
 
 // Export our `app` so we can access it in server.js
