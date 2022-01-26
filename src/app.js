@@ -12,7 +12,7 @@ const pino = require('pino-http')({
 const passport = require('passport');
 const authorization = require('./authorization');
 
-const { createErrorResponse, createSuccessResponse } = require('./response');
+const { createErrorResponse } = require('./response');
 
 // Create an express app instance we can use to attach middleware and HTTP routes
 const app = express();
