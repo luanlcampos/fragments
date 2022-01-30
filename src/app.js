@@ -36,10 +36,11 @@ app.use(passport.initialize());
 app.use('/', require('./routes'));
 
 // Add 404 middleware to handle any requests for resources that can't be found can't be found
-app.use((req, res) => {
+app.use((req, res, next) => {
   // get error response
   const errorResponse = createErrorResponse(404, 'not found');
-  res.status(404).json(errorResponse);
+  // calls the next middleware with the proper error
+  next(errorResponse);
 });
 
 // Add error-handling middleware to deal with anything else
@@ -47,8 +48,8 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
   // We may already have an error response we can use, but if not, use a generic
   // 500 server error and message.
-  const status = err.status || 500;
-  const message = err.message || 'unable to process request';
+  const status = err.error.code || 500;
+  const message = err.error.message || 'unable to process request';
 
   // If this is a server error, log something so we can see what's going on.
   if (status > 499) {
