@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
   // get success response
   const responseData = {
     author,
-    githubUrl: 'https://github.com/humphd/fragments',
+    githubUrl: 'https://github.com/luanlcampos/fragments',
     version,
   };
   const successResponse = createSuccessResponse(responseData);

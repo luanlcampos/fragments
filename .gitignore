@@ -103,3 +103,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# json config for jest intellisense to work
+tests/unit/jsconfig.json
