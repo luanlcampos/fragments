@@ -83,7 +83,6 @@ describe('backend memory db', () => {
 
     test('should throw: keys found, no data returns undefined', async () => {
       const result = await readFragmentData(fragment.ownerId, fragment.id);
-      // console.debug(result.toString());
       expect(result).toBe(undefined);
     });
 
@@ -109,7 +108,6 @@ describe('backend memory db', () => {
 
     test('should return an empty array', async () => {
       const result = await listFragments(fragment.ownerId, true);
-      console.debug(result);
       expect(Array.isArray(result)).toBe(true);
       expect(result).toStrictEqual([]);
     });
