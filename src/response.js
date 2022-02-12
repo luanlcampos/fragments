@@ -16,6 +16,13 @@ module.exports.createSuccessResponse = function (data) {
   };
 };
 
+module.exports.createFragmentsResponse = function (data) {
+  return {
+    status: 'ok',
+    fragments: data,
+  };
+};
+
 /**
  * An error response looks like:
  *
