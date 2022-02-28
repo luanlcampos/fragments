@@ -7,7 +7,9 @@ const { createErrorResponse, createFragmentsResponse } = require('../../response
 module.exports = async (req, res) => {
   // TODO: this is just a placeholder to get something working...
   try {
-    const fragmentList = await Fragment.byUser(req.user);
+    let { expand } = req.query;
+    expand = expand === '1' ? true : false;
+    const fragmentList = await Fragment.byUser(req.user, expand);
     return res.status(200).json(createFragmentsResponse(fragmentList));
   } catch (err) {
     return res.status(500).json(createErrorResponse(500, 'Internal Server Error'));
