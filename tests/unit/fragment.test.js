@@ -226,9 +226,9 @@ describe('Fragment class', () => {
       expect(await Fragment.byUser(ownerId, true)).toEqual([fragment]);
     });
 
-    test('setData() throws if not give a Buffer', async () => {
+    test('setData() throws if not give a Buffer', () => {
       const fragment = new Fragment({ ownerId: '123', type: 'text/plain', size: 0 });
-      await expect(fragment.setData()).rejects.toThrow();
+      expect(() => fragment.setData()).rejects.toThrow();
     });
 
     test('setData() updates the fragment size', async () => {
@@ -248,8 +248,6 @@ describe('Fragment class', () => {
       await fragment.setData(Buffer.from('a'));
 
       await Fragment.delete('1234', fragment.id);
-      // const fragment2 = await Fragment.byId('1234', fragment.id);
-      // expect(fragment2).toBe();
       expect(() => Fragment.byId('1234', fragment.id)).rejects.toThrow();
     });
   });
