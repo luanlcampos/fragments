@@ -5,7 +5,6 @@ const { createErrorResponse, createFragmentsResponse } = require('../../response
  * Get a list of fragments for the current user
  */
 module.exports = async (req, res) => {
-  // TODO: this is just a placeholder to get something working...
   try {
     let { expand } = req.query;
     expand = expand === '1' ? true : false;
