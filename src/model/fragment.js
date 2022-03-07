@@ -84,11 +84,10 @@ class Fragment {
    */
   static async byId(ownerId, id) {
     try {
-      logger.info('Getting fragment data based on id');
       logger.debug(`Fragment data with id: ${id} from owner: ${ownerId}`);
       const frag = await readFragment(ownerId, id);
       if (!frag) {
-        logger.error('No fragment found with the provided data');
+        logger.warn('No fragment found with the provided data');
         throw new Error('No fragment found with the provided data');
       }
       return frag;
@@ -125,7 +124,6 @@ class Fragment {
    * @returns Promise<Buffer>
    */
   getData() {
-    // TODO
     return readFragmentData(this.ownerId, this.id);
   }
 
@@ -142,7 +140,7 @@ class Fragment {
     logger.debug(`Setting data for this fragment. Data: ${data.toString()}`);
     this.updated = new Date().toISOString();
     this.size = Buffer.byteLength(data);
-    return await writeFragmentData(this.ownerId, this.id, data);
+    return writeFragmentData(this.ownerId, this.id, data);
   }
 
   /**
@@ -168,7 +166,6 @@ class Fragment {
    * @returns {Array<string>} list of supported mime types
    */
   get formats() {
-    // TODO
     const type = this.mimeType;
     switch (type) {
       case 'text/plain':
