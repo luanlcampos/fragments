@@ -20,12 +20,12 @@ const { text } = require('express');
 const validTypes = [
   `text/plain`,
   'text/plain; charset=utf-8',
-  /*
-   Currently, only text/plain is supported. Others will be added later.
 
   `text/markdown`,
   `text/html`,
   `application/json`,
+  /*
+   Currently, only text/plain is supported. Others will be added later.
   `image/png`,
   `image/jpeg`,
   `image/webp`,

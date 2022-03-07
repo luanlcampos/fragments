@@ -40,7 +40,10 @@ const rawBody = () =>
 router.post('/fragments', rawBody(), require('./post'));
 
 // Return a fragment data based on fragmentId (:id) for the authenticated user
-router.get('/fragments/:id', require('./getFragmentById'));
+router.get('/fragments/:id', require('./getFragmentDataById'));
+
+// Return a fragment metadata based on fragmentId (:id) for the authenticated user
+router.get('/fragments/:id/info', require('./getFragmentById'));
 
 // Other routes will go here later on...
 module.exports = router;

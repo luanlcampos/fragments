@@ -1,14 +1,18 @@
-// src/routes/api/getFragmentById.js
+// src/routes/api/getFragmentDataById.js
 const logger = require('../../logger');
 const { Fragment } = require('../../model/fragment');
-const { createErrorResponse, createFragmentResponse } = require('../../response');
+const { createErrorResponse } = require('../../response');
 
 module.exports = async (req, res) => {
   const { id } = req.params;
   try {
     const fragment = await Fragment.byId(req.user, id);
-    res.setHeader('Content-Type', 'application/json; charset=utf-8');
-    res.status(200).json(createFragmentResponse(fragment));
+    if (fragment) {
+      const frag = new Fragment(fragment);
+      res.setHeader('Content-Type', frag.mimeType);
+      const fragData = await frag.getData();
+      res.status(200).send(fragData);
+    }
   } catch (err) {
     logger.warn(err);
     res.status(404).json(createErrorResponse(404, 'Did not found any fragment with this id'));
