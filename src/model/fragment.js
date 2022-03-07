@@ -171,16 +171,16 @@ class Fragment {
       case 'text/plain':
         return ['text/plain'];
 
-      // case 'text/markdown':
-      //   return ['text/markdown', 'text/html', 'text/plain'];
+      case 'text/markdown':
+        return ['text/markdown', 'text/html', 'text/plain'];
 
-      // case 'text/html':
-      //   return ['text/html', 'text/plain'];
+      case 'text/html':
+        return ['text/html', 'text/plain'];
 
-      // //future support
-      // case 'application/json':
-      //   return ['application/json', 'text/plain'];
+      case 'application/json':
+        return ['application/json', 'text/plain'];
 
+      //future support
       // case 'image/png':
       //   return ['image/png', 'image/jpeg', 'image/webp', 'image/gif'];
 
@@ -204,10 +204,8 @@ class Fragment {
    * @returns {boolean} true if we support this Content-Type (i.e., type/subtype)
    */
   static isSupportedType(value) {
-    // add supported types list
-    const supportedTypes = ['text/plain', 'text/plain; charset=utf-8'];
-    // returns true if it value is in the supported types list
-    return supportedTypes.includes(value);
+    // accepts all text types and json
+    return value.startsWith('text/') || value.startsWith('application/json');
   }
 }
 
