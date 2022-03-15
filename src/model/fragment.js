@@ -94,8 +94,6 @@ class Fragment {
     } catch (err) {
       throw new Error(err);
     }
-
-    // return await readFragment(ownerId, id);
   }
 
   /**
@@ -168,19 +166,22 @@ class Fragment {
   get formats() {
     const type = this.mimeType;
     switch (type) {
+      case 'text/markdown':
+        return ['text/markdown', 'text/html'];
+
       case 'text/plain':
         return ['text/plain'];
-
-      case 'text/markdown':
-        return ['text/markdown', 'text/html', 'text/plain'];
-
-      case 'text/html':
-        return ['text/html', 'text/plain'];
-
-      case 'application/json':
-        return ['application/json', 'text/plain'];
-
       //future support
+
+      // case 'text/markdown':
+      //   return ['text/markdown', 'text/html', 'text/plain'];
+
+      // case 'text/html':
+      //   return ['text/html', 'text/plain'];
+
+      // case 'application/json':
+      //   return ['application/json', 'text/plain'];
+
       // case 'image/png':
       //   return ['image/png', 'image/jpeg', 'image/webp', 'image/gif'];
 

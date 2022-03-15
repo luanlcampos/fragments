@@ -30,6 +30,7 @@ module.exports = async (req, res) => {
       // returns 201 with the fragment metadata
       return res.status(201).json(createFragmentsResponse(fragment));
     } catch (err) {
+      logger.warn(err);
       return res.status(500).json(createErrorResponse(500, 'Internal Server Error'));
     }
   }
