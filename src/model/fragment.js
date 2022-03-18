@@ -18,12 +18,10 @@ const {
 const { text } = require('express');
 
 const validTypes = [
-  `text/plain`,
-  'text/plain; charset=utf-8',
-
-  `text/markdown`,
-  `text/html`,
-  `application/json`,
+  'text/plain',
+  'text/markdown',
+  'text/html',
+  'application/json',
   /*
    Currently, only text/plain is supported. Others will be added later.
   `image/png`,
@@ -44,8 +42,8 @@ class Fragment {
       throw new Error('Size must be a number');
     } else if (size < 0) {
       throw new Error('Size must be a positive number');
-    } else if (!validTypes.includes(type)) {
-      throw new Error('Type is not supported');
+    } else if (!validTypes.some((item) => type.includes(item))) {
+      throw new Error(`${type} is not supported`);
     } else {
       // create a new id if id is not passed
       this.id = id ? id : nanoid();
@@ -205,8 +203,8 @@ class Fragment {
    * @returns {boolean} true if we support this Content-Type (i.e., type/subtype)
    */
   static isSupportedType(value) {
-    // accepts all text types and json
-    return value.startsWith('text/') || value.startsWith('application/json');
+    // accepts all text types and json. Check validTypes for the full list
+    return validTypes.some((item) => value.includes(item));
   }
 }
 
