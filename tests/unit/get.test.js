@@ -20,7 +20,6 @@ describe('GET /v1/fragments', () => {
     expect(Array.isArray(res.body.fragments)).toBe(true);
   });
 
-  // TODO: we'll need to add tests to check the contents of the fragments array later
   describe('GET /v1/fragments?expand=1', () => {
     // If the request is missing the Authorization header, it should be forbidden
     test('unauthenticated requests are denied', () =>
