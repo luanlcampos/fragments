@@ -24,7 +24,7 @@ jsonpath "$.fragments.ownerId" matches "^[0-9a-fA-F]+$"
 # You could also write a regex for this and use matches
 jsonpath "$.fragments.created" isString
 jsonpath "$.fragments.updated" isString
-jsonpath "$.fragments.type" == "text/plain"
+jsonpath "$.fragments.type" == "text/plain; charset=utf-8"
 # 25 is the length of our fragment data: 'Fragment integration test'
 jsonpath "$.fragments.size" == 25
 # Capture the Location URL into a variable named `url`
@@ -36,7 +36,7 @@ GET {{url}}
 Authorization: Basic dXNlcjFAZW1haWwuY29tOnBhc3N3b3JkMQ==
 
 HTTP/1.1 200
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
 Content-Length: 25
 [Asserts]
 body == "Fragment integration test"
