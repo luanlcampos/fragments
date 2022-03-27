@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
     const fragment = await Fragment.byId(req.user, id);
     if (fragment) {
       const frag = new Fragment(fragment);
-      res.setHeader('Content-Type', frag.mimeType);
+      res.setHeader('Content-Type', frag.type);
       let fragData = await frag.getData();
 
       // check if the extension exists and if it's different than the current extension

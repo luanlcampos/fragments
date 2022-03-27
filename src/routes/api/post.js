@@ -8,7 +8,9 @@ module.exports = async (req, res) => {
   // check if we were able to parse the file
   if (Object.keys(req.body) !== 0 && Buffer.isBuffer(req.body)) {
     try {
-      const { type } = contentType.parse(req);
+      // get content type header and store on a const variable
+      const type = req.headers['content-type'];
+      // const type = contentType.parse(req);
       logger.debug(`Creating a new fragment with the request data`);
       const fragment = new Fragment({
         id: null,
