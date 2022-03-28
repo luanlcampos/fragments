@@ -102,3 +102,4 @@ jobs:
           environment_name: fragments-env
           version_label: ${{ env.VERSION }}
           deployment_package: ${{ env.COMPOSE_FILE }}
+          use_existing_version_if_available: true
