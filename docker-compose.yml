@@ -1,7 +1,6 @@
 # docker-compose.yml
 services:
   fragments:
-    # image: 154956336757.dkr.ecr.us-east-1.amazonaws.com/fragments:latest
     image: ${DOCKER_REPO}:${DOCKER_TAG}
     init: true
     ports:
