@@ -1,4 +1,4 @@
-// src/routes/api/getFragmentById.js
+// src/routes/api/deleteFragmentById.js
 const logger = require('../../logger');
 const { Fragment } = require('../../model/fragment');
 const { createErrorResponse } = require('../../response');
