@@ -45,6 +45,9 @@ router.get('/fragments/:id', require('./getFragmentDataById'));
 // Return a fragment metadata based on fragmentId (:id) for the authenticated user
 router.get('/fragments/:id/info', require('./getFragmentById'));
 
+// Update fragment data based on fragmentId (:id) for the authenticated user
+router.put('/fragments/:id', rawBody(), require('./updateFragmentDataById'));
+
 // Delete a fragment based on fragmentId (:id) for the authenticated user
 router.delete('/fragments/:id', require('./deleteFragmentById'));
 
