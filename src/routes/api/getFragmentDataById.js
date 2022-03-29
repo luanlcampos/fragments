@@ -12,6 +12,7 @@ module.exports = async (req, res) => {
     if (id.lastIndexOf('.') !== -1) {
       // get the extension
       extension = id.split('.').pop();
+      if (extension === 'txt') extension = 'text/plain';
       id = id.split('.')[0];
     }
     const fragment = await Fragment.byId(req.user, id);

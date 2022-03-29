@@ -8,7 +8,9 @@ const md = require('markdown-it')();
  */
 function convert(data, extension, mimeType) {
   if (data && extension) {
-    if (mimeType.includes('markdown') && extension.toLowerCase() === 'html') {
+    if (extension === 'text/plain') {
+      return data.toString();
+    } else if (mimeType.includes('markdown') && extension.toLowerCase() === 'html') {
       // convert buffered data to string and return the html content
       return md.render(data.toString());
     }
