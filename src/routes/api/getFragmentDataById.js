@@ -12,6 +12,7 @@ module.exports = async (req, res) => {
     if (id.lastIndexOf('.') !== -1) {
       // get the extension
       extension = id.split('.').pop();
+      if (extension === 'txt') extension = 'text/plain';
       id = id.split('.')[0];
     }
     const fragment = await Fragment.byId(req.user, id);
@@ -27,7 +28,8 @@ module.exports = async (req, res) => {
         if (convertOption.length > 0) {
           // set the content type to the converted type
           res.setHeader('Content-Type', convertOption[0]);
-          fragData = Buffer.from(convert(fragData, extension, frag.mimeType));
+          fragData = await convert(fragData, extension, frag.mimeType);
+          // fragData = Buffer.from(fragData);
         } else {
           // return 415 if file conversion is not supported
           res.setHeader('Content-Type', 'application/json');
