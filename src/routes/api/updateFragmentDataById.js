@@ -32,6 +32,7 @@ module.exports = async (req, res) => {
       // returns 200 with the fragment updated metadata
       return res.status(200).json(createFragmentsResponse(fragment));
     }
+    return res.status(400).json(createErrorResponse(400, 'Bad Request'));
   } catch (err) {
     logger.warn(err);
     return res
