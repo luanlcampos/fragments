@@ -130,7 +130,7 @@ class Fragment {
       logger.debug(`Type of data is:  ${typeof data}`);
       throw new Error('data is not a buffer. Check log for details');
     }
-    logger.debug(`Setting data for this fragment. Data: ${data.toString()}`);
+    logger.debug(`Setting data for this fragment`);
     this.updated = new Date().toISOString();
     this.size = Buffer.byteLength(data);
     return writeFragmentData(this.ownerId, this.id, data);

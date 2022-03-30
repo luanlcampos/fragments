@@ -14,7 +14,7 @@ services:
       # Environment variables to use
     environment:
       # Our API will be running on http://localhost:8080
-      - API_URL=http://localhost:8080
+      - API_URL=http://localhost:8080/v1/fragments
       # Use Basic Auth (for running tests, CI)
       - HTPASSWD_FILE=tests/.htpasswd
       # Use the LOG_LEVEL set in the host environment, or default to info
