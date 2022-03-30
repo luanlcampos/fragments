@@ -32,7 +32,7 @@ describe('POST /v1/fragments', () => {
     const res = await request(app)
       .post('/v1/fragments')
       .auth('user1@email.com', 'password1')
-      .set('Content-Type', 'image/jpeg')
+      .set('Content-Type', 'text/css')
       .send('fragment from unit test');
 
     expect(res.statusCode).toBe(415);
