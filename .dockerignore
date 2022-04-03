@@ -10,3 +10,5 @@ tests/
 .gitignore
 .prettier*
 jest*
+# minIO local storage folder
+minio/

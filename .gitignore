@@ -106,3 +106,6 @@ dist
 
 # json config for jest intellisense to work
 tests/unit/jsconfig.json
+
+# minio local s3 files
+minio/
