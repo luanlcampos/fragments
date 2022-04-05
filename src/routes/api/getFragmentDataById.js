@@ -3,17 +3,20 @@ const logger = require('../../logger');
 const { Fragment } = require('../../model/fragment');
 const { createErrorResponse } = require('../../response');
 const { convert } = require('../../util/convertFragmentData');
+const path = require('path');
 
 module.exports = async (req, res) => {
   let { id } = req.params;
-  let extension;
+  let extension = path.parse(id).ext;
   try {
     // separate extension from id if ext exists
-    if (id.lastIndexOf('.') !== -1) {
+    if (extension !== '') {
+      // if (id.lastIndexOf('.') !== -1) {
       // get the extension
       extension = id.split('.').pop();
       if (extension === 'txt') extension = 'text/plain';
-      id = id.split('.')[0];
+      id = path.parse(id).name;
+      // id = id.split('.')[0];
     }
     const fragment = await Fragment.byId(req.user, id);
     if (fragment) {
