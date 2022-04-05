@@ -14,9 +14,7 @@ WORKDIR /app
 COPY package*.json /app/
 
 # Install prerequisites
-RUN apk --no-cache add curl
-
-
+RUN apk --no-cache add curl=7.68.0
 
 # DEV option
 # Use builder image
