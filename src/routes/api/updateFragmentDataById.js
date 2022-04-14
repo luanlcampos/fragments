@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     logger.debug({ fragment, id, type }, 'PUT');
     logger.debug('mimeType: ' + fragment.mimeType + ' vs ' + type);
     // check if the fragment type is the same as the request
-    if (type === fragment.mimeType) {
+    if (type === fragment.type) {
       logger.debug(`Updating a fragment with the new data: ${fragment.id} -> ${req.body}`);
 
       fragment.setData(req.body);
