@@ -10,8 +10,8 @@ module.exports = async (req, res) => {
 
   const { type } = contentType.parse(req);
   try {
-    const fragment = await Fragment.byId(req.user, id);
-
+    const fragRes = await Fragment.byId(req.user, id);
+    const fragment = new Fragment(fragRes);
     // check if the fragment author is the editor
     if (fragment.ownerId !== req.user) {
       return res.status(403).json(createErrorResponse(403, 'Forbidden'));
