@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
     if (fragment.ownerId !== req.user) {
       return res.status(403).json(createErrorResponse(403, 'Forbidden'));
     }
-
+    logger.debug({ fragment, id, type }, 'PUT');
     // check if the fragment type is the same as the request
     if (type === fragment.mimeType) {
       logger.debug(`Updating a fragment with the new data: ${fragment.id} -> ${req.body}`);
