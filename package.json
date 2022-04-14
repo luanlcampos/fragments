@@ -1,6 +1,6 @@
 {
   "name": "fragments",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "CCP555 repo for labs and assignments",
   "devDependencies": {
     "eslint": "^8.6.0",
