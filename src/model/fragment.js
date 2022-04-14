@@ -143,6 +143,8 @@ class Fragment {
    */
   get mimeType() {
     const { type } = contentType.parse(this.type);
+    logger.debug(`Fragment type: ${this.type}`);
+    logger.debug(`Fragment mime type: ${type}`);
     return type;
   }
 
