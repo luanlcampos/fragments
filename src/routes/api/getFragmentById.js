@@ -6,6 +6,7 @@ const { createErrorResponse, createFragmentResponse } = require('../../response'
 module.exports = async (req, res) => {
   const { id } = req.params;
   try {
+    // check if fragment exists
     const fragment = await Fragment.byId(req.user, id);
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.status(200).json(createFragmentResponse(fragment));

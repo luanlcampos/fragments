@@ -3,6 +3,7 @@ const { Fragment } = require('../../model/fragment');
 const { createErrorResponse, createFragmentsResponse } = require('../../response');
 /**
  * Get a list of fragments for the current user
+ * @Note expanded fragments returns an array of fragments metadata, while not expanded returns an array of fragments id
  */
 module.exports = async (req, res) => {
   try {

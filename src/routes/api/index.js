@@ -12,7 +12,6 @@ const router = express.Router();
 
 // Fragment class
 const { Fragment } = require('../../model/fragment');
-const logger = require('../../logger');
 
 // Define our first route, which will be: GET /v1/fragments
 router.get('/fragments', require('./get'));
@@ -30,8 +29,6 @@ const rawBody = () =>
       // will be equal to an empty Object `{}` and `Buffer.isBuffer(req.body) === false`
       // eslint-disable-next-line no-undef
       const { type } = contentType.parse(req);
-      const test = contentType.parse(req);
-      logger.debug(test);
       return Fragment.isSupportedType(type);
     },
   });

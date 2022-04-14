@@ -23,17 +23,6 @@ async function convert(data, extension, mimeType) {
       // convert buffered data to buffer and return the sharp image
       return sharp(data).toFormat(extension.toLowerCase()).toBuffer();
     }
-
-    // else if (mimeType.includes('jpeg')) {
-    //   return await sharp(data).jpeg().toBuffer();
-    // } else if (mimeType.includes('png')) {
-    //   return await sharp(data).png().toBuffer();
-    // } else if (mimeType.includes('webp')) {
-    //   return await sharp(data).webp().toBuffer();
-    // } else if (mimeType.includes('gif')) {
-    //   return await sharp(data).gif().toBuffer();
-    // }
-    // more conversion to be add in the future
   }
 }
 

@@ -6,6 +6,7 @@ const { createErrorResponse } = require('../../response');
 module.exports = async (req, res) => {
   const { id } = req.params;
   try {
+    // check if fragment exists
     const fragment = await Fragment.byId(req.user, id);
     if (fragment) {
       await Fragment.delete(fragment.ownerId, fragment.id);

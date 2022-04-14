@@ -1,17 +1,10 @@
 // src/model/data/aws/index
 
-// Note: temporary use of memory-db until we add DynamoDB
-//const MemoryDB = require('../memory/memory-db');
-
 const s3Client = require('./s3Client');
 const ddbDocClient = require('./ddbDocClient');
 const { PutObjectCommand, GetObjectCommand, DeleteObjectCommand } = require('@aws-sdk/client-s3');
 const { PutCommand, GetCommand, QueryCommand, DeleteCommand } = require('@aws-sdk/lib-dynamodb');
 const { logger } = require('../../../logger');
-
-// Create two in-memory databases: one for fragment metadata and the other for raw data
-// const data = new MemoryDB();
-// const metadata = new MemoryDB();
 
 // Write a fragment's metadata to memory db. Returns a Promise
 function writeFragment(fragment) {
@@ -132,17 +125,6 @@ async function readFragmentData(ownerId, id) {
  * @returns Promise<Array<Fragment>>
  */
 async function listFragments(ownerId, expand = false) {
-  /*
-  const fragments = await metadata.query(ownerId);
-
-  // If we don't get anything back, or are supposed to give expanded fragments, return
-  if (expand || !fragments) {
-    return fragments;
-  }
-
-  // Otherwise, map to only send back the ids
-  return fragments.map((fragment) => fragment.id);
-  */
   // Configure our GET params, with the name of the table and key (partition key + sort key)
   const params = {
     TableName: process.env.AWS_DYNAMODB_TABLE_NAME,
@@ -201,8 +183,6 @@ async function deleteFragment(ownerId, id) {
   const dynamodbCommand = new DeleteCommand(dynamodbParams);
 
   try {
-    // delete metadata on memory db
-    // metadata.del(ownerId, id);
     // Send the deletion command to S3
     await s3Client.send(command);
 
