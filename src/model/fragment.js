@@ -107,7 +107,7 @@ class Fragment {
    */
   save() {
     logger.info(`Saving fragment to database`);
-    logger.debug(`Fragment being saved: ${this}`);
+    logger.debug(this, 'Fragment being saved');
     this.updated = new Date().toISOString();
     return writeFragment(this);
   }
