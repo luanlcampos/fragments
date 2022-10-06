@@ -2,7 +2,7 @@
 
 An API that will handle the upload and management of files into a cloud storage.
 
-The UI repo can be found [here](https://github.com/luanlcampos/fragments-ui)
+The fragments-ui code can be found [here](https://github.com/luanlcampos/fragments-ui)
 
 # Getting started
 
