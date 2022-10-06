@@ -1,6 +1,8 @@
 # fragments
 
-CCP555 repo for labs and assignments
+An API that will handle the upload and management of files into a cloud storage.
+
+The UI repo can be found [here](https://github.com/luanlcampos/fragments-ui)
 
 # Getting started
 
@@ -25,10 +27,3 @@ To get the Node server running locally:
 - [pino-http](https://www.npmjs.com/package/pino-http) - HTTP logger
 - [pino-pretty](https://www.npmjs.com/package/pino-pretty) - logger formatter
 - [stoppable](https://www.npmjs.com/package/stoppable) - stop/close the server in the expected way
-
-## Application Structure
-
-- `src`
-  - `app` -
-  - `server` -
-  - `logger` -
